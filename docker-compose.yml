@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  signalrdemo:
+    image: chrisdou/signalrdemo:20180629040118
+    expose:
+       - "5000"
+ 
+  proxy:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    links:
+     - signalrdemo
